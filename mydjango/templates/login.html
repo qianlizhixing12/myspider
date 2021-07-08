@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>用户登录</title>
+    <link rel="icon" href="{% static 'images/nxx.jpg' %}" type="image/x-icon" />
+    <!-- Bootstrap -->
+    <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{% static 'vendors/nprogress/nprogress.css' %}" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="{% static 'vendors/animate.css/animate.min.css' %}" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="{% static 'build/css/custom.min.css' %}" rel="stylesheet">
+</head>
+
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form>
+                        <h1>账号密码登录</h1>
+                        <div>
+                            <input id="lusername" type="text" class="form-control" placeholder="用户名" />
+                        </div>
+                        <div>
+                            <input id="lpassword" type="password" class="form-control" placeholder="密码" />
+                        </div>
+                    </form>
+                    <div>
+                        <button class="btn btn-default" onclick="login()">登录</button>
+                    </div>
+                    <div class=" clearfix"></div>
+                    <div class="separator">
+                        <p class="change_link">还未注册?
+                            <a href="#signup" class="to_register"> 创建账户 </a>
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+            <div id="register" class="animate form registration_form">
+                <section class="login_content">
+                    <form>
+                        <h1>创建账户</h1>
+                        <div>
+                            <input id="remail" type="text" class="form-control" placeholder="邮箱" />
+                        </div>
+                        <div>
+                            <input id="rusername" type="text" class="form-control" placeholder="用户名" />
+                        </div>
+                        <div>
+                            <input id="rpassword" type="password" class="form-control" placeholder="密码" />
+                        </div>
+                    </form>
+                    <div>
+                        <button class="btn btn-default" onclick="create()">创建</button>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="separator">
+                        <p class="change_link">已注册?
+                            <a href="#signin" class="to_register"> 登录 </a>
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>
+    <script type="text/javascript">
+        function login() {
+            $.ajax({
+                url: "/api/custom/login.do",
+                type: "post",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify({
+                    "username": document.getElementById("lusername").value,
+                    "password": document.getElementById('lpassword').value
+                }),
+                dataType: "json",
+                success: function (data) {
+                    if (data.succ) {
+                        window.location.href = window.location.origin + '/custom/index.html';
+                    } else {
+                        alert(data.msg);
+                    }
+                },
+                error: function (err) {
+                    console.log('err', err)
+                }
+            });
+        };
+
+        function create() {
+            $.ajax({
+                url: "/api/custom/create.do",
+                type: "post",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify({
+                    "email": $("#remail").val(),
+                    "username": $("#rusername").val(),
+                    "password": $("#rpassword").val()
+                }),
+                dataType: "json",
+                success: function (data) {
+                    alert(data.msg);
+                    if (data.succ) {
+                        window.location.href = window.location.origin + '/custom/login.html#signin';
+                    }
+                },
+                error: function (err) {
+                    console.log('err', err)
+                }
+            });
+        };
+    </script>
+</body>
+
+</html>

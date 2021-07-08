@@ -1,0 +1,208 @@
+<div class="x_panel">
+    <div class="x_title">
+        <h2>附加信息 <small>个人信息</small></h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <br />
+        <!-- form加上novalidate去除jquery自带校验，使用不同于data-parsley-validate的组件validator支持校验必填项等等 -->
+        <!-- required="required" 或者直接 required校验是否必填项 -->
+        <!-- data-validate-linked="" 校验和链接处是否一致 -->
+        <!-- data-validate-length="6" 排除长度 -->
+        <!-- data-validate-length-range 没起作用？？？ -->
+        <!-- data-validate-minmax="10,100" 数值范围 -->
+        <!-- data-validate-words="2" 单词数量 -->
+        <form class="form-horizontal form-label-left" novalidate action="/api/custom/attr/edit.do" method="POST"
+            target="for_form">
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">年龄
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <input type="number" name="age" required="required" data-validate-minmax="10,100"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">血型
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <select class="form-control" name="blood" required="required">
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>O</option>
+                        <option>AB</option>
+                    </select>
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">性别
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6 formcentre">
+                    男&nbsp;<input type="radio" class="form-control flat" name="sex" required="required" value="1"
+                        checked="checked" />
+                    女&nbsp;<input type="radio" class="form-control flat" name="sex" required="required" value="0" />
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">婚姻
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6 formcentre">
+                    <input type="checkbox" class="form-control js-switch" name="marry" required="required" value="1"
+                        checked />已婚
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">民族
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6 formcentre">
+                    <input type="checkbox" class="flat" name="nation" required="required" value="1" checked="checked"> 汉
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">电话
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <input type="tel" name="phone" required="required" data-validate-length-range="8,20"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">区域
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <select class="select2_group form-control" name="area" required="required">
+                        <optgroup label="河南">
+                            <option value="AK">郑州</option>
+                            <option value="CK">开封</option>
+                            <option value="HI">许昌</option>
+                        </optgroup>
+                        <optgroup label="浙江">
+                            <option value="CA">杭州</option>
+                            <option value="NV">宁波</option>
+                            <option value="OR">衢州</option>
+                        </optgroup>
+                        <optgroup label="上海">
+                            <option value="AZ">上海</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group item">
+                <label class="control-label col-md-3 label-align" for="address">地址
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <input type="text" name="address" class="form-control" required="required">
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">备用邮箱
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <input type="email" name="spare_email" required="required" class="form-control">
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">确认备用邮箱
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <input type="email" name="confirm_spare_email" data-validate-linked="spare_email"
+                        required="required" class="form-control">
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">备用密码
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <input type="password" name="spare_password" data-validate-length="6" class="form-control"
+                        required="required">
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align ">确认备用密码
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <input type="password" name="confirm_spare_password" data-validate-linked="spare_password"
+                        class="form-control" required="required">
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">个人网站
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <input type="url" name="website" required="required" placeholder="www.website.com"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">任职公司
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <input class="form-control" data-validate-length-range="10" data-validate-words="2" name="company"
+                        required="required" type="text">
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">任职职位
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <input type="text" name="position" data-validate-length-range="5,20" class="form-control"
+                        required="required">
+                </div>
+            </div>
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 label-align">工作内容
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <textarea required="required" rows="3" name="job_content" class="form-control"></textarea>
+                </div>
+            </div>
+            <!-- <div class="item form-group">
+                    <label class="col-form-label col-md-3 label-align">兴趣爱好
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6">
+                        <select class="select2_multiple form-control" name="interest" multiple="multiple"
+                            required="required">
+                            <option value="读书">读书</option>
+                            <option value="运动">运动</optionvalue="读书">
+                            <option value="旅游">旅游</option>
+                            <option value="吃喝">吃喝</option>
+                            <option value="游戏">游戏</option>
+                        </select>
+                    </div>
+                </div> -->
+            <div class="control-group item">
+                <label class="col-form-label col-md-3 label-align">标签
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6">
+                    <input id="tags_1" type="text" name="tag" required="required" class="tags form-control" value="" />
+                </div>
+            </div>
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <div class="col-md-10  offset-md-5">
+                    <button type="reset" id="resetattr" class="btn btn-primary">重置</button>
+                    <button type="submit" id="saveattr" class="btn btn-success">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

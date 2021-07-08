@@ -1,0 +1,24 @@
+.jobtable {
+    /* color: antiquewhite; */
+    overflow-x: hidden;
+    /*x轴禁止滚动*/
+    overflow-y: hidden;
+    /*y轴滚动*/
+}
+
+.jobtable::-webkit-scrollbar {
+    display: none;
+    /*隐藏滚动条*/
+}
+
+.updatedt {
+    border: 1px solid #ced4da;
+    color: #495057;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.formcentre {
+    padding-top: 5px;
+}

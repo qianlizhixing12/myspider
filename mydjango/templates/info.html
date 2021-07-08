@@ -1,0 +1,81 @@
+<div class="x_panel">
+    <div class="x_title">
+        <h2>基础信息 <small>认证信息</small></h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <br />
+        <!-- form加上data-parsley-validate，支持校验必填项等等 -->
+        <!-- data-parsley-required="true" 或者 required="required" 或者直接 required校验是否必填项 -->
+        <!-- data-parsley-type="email" 检验是否有效邮箱 -->
+        <!-- data-parsley-minlength 字符串最小长度 -->
+        <!-- data-parsley-mincheck="2" -->
+        <!-- <textarea id="message" required="required" class="form-control" name="message"
+                        data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100"
+                        data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                        data-parsley-validation-threshold="10"></textarea> -->
+        <!-- form处理过程
+            1、用户点击按钮
+            2、触发onclick事件
+            3、onclick返回true或未处理onclick 
+            4、触发onsubmit事件
+            5、onsubmit未处理或返回true
+            6、提交表单.
+            onsubmit处理函数返回false，onclick函数返回false，都不会引起表单提交。 -->
+        <form id="demo-form2" class="form-label-left input_mask" data-parsley-validate action="/api/custom/edit.do"
+            method="POST" target="for_form">
+            <div class="col-md-10 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" name="email" placeholder="邮箱"
+                    data-parsley-required="true" data-parsley-type="email">
+                <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-10 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" name="username" placeholder="登录名"
+                    data-parsley-required="true" data-parsley-minlength="3">
+                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-10 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" name="first_name" placeholder="first name">
+                <span class="fa fa-heart form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-10 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" name="last_name" placeholder="last name">
+                <span class="fa fa-heart form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-10 form-group has-feedback">
+                <input type="password" class="form-control has-feedback-left" name="password" placeholder="密码"
+                    data-parsley-required="true" data-parsley-minlength="10">
+                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+            </div>
+            <div class="col-md-12 divider-dashed"></div>
+            <div class="col-md-11 form-group row">
+                <label class="col-form-label col-md-2">创建时间 </label>
+                <div class="col-md-9">
+                    <input type="text" class="date-picker form-control" readonly="readonly" id="date_joined">
+                </div>
+            </div>
+            <div class="col-md-11 form-group row">
+                <label class="col-form-label col-md-2">登录时间 </label>
+                <div class="col-md-9">
+                    <input type="text" class="date-picker form-control" readonly="readonly" id="last_login">
+                </div>
+            </div>
+            <div class="col-md-11 form-group row">
+                <label class="col-form-label col-md-2">管理员 </label>
+                <div class="col-md-9">
+                    &nbsp;是
+                    <input type="radio" disabled="disabled" id="is_superuserY" value="1" />
+                    &nbsp;&nbsp;否
+                    <input type="radio" disabled="disabled" id="is_superuserN" value="0" />
+                </div>
+            </div>
+            <div class="col-md-12 ln_solid"></div>
+            <div class="col-md-10 form-group row">
+                <div class="col-md-10  offset-md-5">
+                    <button type="reset" id="resetcustom" class="btn btn-primary">重置</button>
+                    <button type="submit" id="savecustom" class="btn btn-success">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="x_panel">
+    <div class="x_title">
+        <h5>学校数据<small>&nbsp;&nbsp;满意度前50</small></h5>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered jambo_table bulk_action">
+                <thead>
+                    <tr class="headings">
+                        <th>
+                            <input type="checkbox" id="check-all" class="flat">
+                        </th>
+                        <th class="column-title">序号</th>
+                        <th class="column-title">院校名称</th>
+                        <th class="column-title">院校所在地</th>
+                        <th class="column-title">教育行政主管部门</th>
+                        <th class="column-title">院校类型</th>
+                        <th class="column-title">学历层次</th>
+                        <th class="column-title">满意度</th>
+                        <th class="column-title">采集时间</th>
+                        <th class="column-title no-link last"><span class="nobr">Action</span>
+                        </th>
+                        <th class="bulk-actions" colspan="7">
+                            <a class="antoo" style="color:#fff; font-weight:500;">Bulk
+                                Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for school in schools %}
+                    {% if forloop.counter|divisibleby:2 %}
+                    <tr class="odd pointer">
+                        {% else %}
+                    <tr class="even pointer">
+                        {% endif %}
+                        <td class="a-center ">
+                            <input type="checkbox" class="flat" name="table_records">
+                        </td>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ school.name }}</td>
+                        <td>{{ school.city }}</td>
+                        <td>{{ school.dep }}</td>
+                        <td>{{ school.style }}</td>
+                        <td>{{ school.level }}<i class="success fa fa-long-arrow-up"></i></td>
+                        <td>{{ school.star }}</td>
+                        <td class="a-right a-right ">{{ school.updatedt }}</td>
+                        <td class=" last"><a href="#">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
