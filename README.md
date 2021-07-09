@@ -1,8 +1,11 @@
 # myspider
 数据采集练习
 
-# 网址模板
+# 网站模板
 https://colorlib.com/polygon/gentelella/index.html
+
+# 其他模板推荐
+https://adminlte.io/
 
 # 测试账户密码
 - admin admin12345
